@@ -97,7 +97,7 @@ Integrating a multi-agent architecture with selective RAG improved automated cau
 
 ## 👤 Author
 
-**Daisy Rae Lopez** — (Master's Student, Dept. of Drug Design and Pharmacology (ILF), University of Copenhagen)
+**Daisy Rae Lopez** (Master's Student, Dept. of Drug Design and Pharmacology (ILF), University of Copenhagen)
 **Maurizio Sessa** (Advisor and Coordinator, Dept. of Drug Design and Pharmacology (ILF), University of Copenhagen)
 
 ## 📚 Citation
