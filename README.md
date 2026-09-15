@@ -38,7 +38,7 @@ MARCA achieved an overall Naranjo classification agreement of **82.9% (Cohen's �
 | Q2 — Temporal association | 96.8% | 0.491 |
 | Q5 — Alternative causes | 84.9% | 0.238 |
 | Q10 — Objective evidence | 96.8% | 0.922 |
-| Q3, Q4, Q6–Q9 | 99–100% | — (near-universal default scoring due to sparse FAERS documentation) |
+| Q3, Q4, Q6–Q9 | 100% | — (near-universal default scoring due to sparse FAERS documentation) |
 
 ### 🔹 Effect of Selective RAG (60-DEC ablation cohort)
 
@@ -91,7 +91,7 @@ Integrating a multi-agent architecture with selective RAG improved automated cau
 
 ## ⚙️ Requirements
 
-- Python 3.x
+- Python 3.11
 - [CrewAI](https://github.com/crewAIInc/crewAI) v0.126.0
 - API access: Google Gemini 2.5 Pro, DeepSeek-V3.2, NCBI Entrez (PubMed), OpenFDA, RxNorm
 
@@ -105,15 +105,10 @@ Supervisor: **Maurizio Sessa**, Associate Professor, University of Copenhagen
 If you use this repository or its materials in academic work, please cite:
 
 ```bibtex
-@mastersthesis{Lopez2026MARCA,
-  title  = {Multi-Agent Retrieval-Augmented for Individual-level Causality Assessment (MARCA) in Pharmacovigilance},
-  author = {Lopez, Daisy Rae},
-  school = {University of Copenhagen},
-  year   = {2026},
-  note   = {Master's Thesis, Department of Drug Design and Pharmacology}
+@article{Lopez2026MARCA,
+  title   = {Multi-Agent Retrieval-Augmented for Individual-level Causality Assessment (MARCA) in Pharmacovigilance},
+  author  = {Lopez, Daisy Rae and Sessa, Maurizio},
+  year    = {2026},
+  journal = {Manuscript under review}
 }
 ```
-
-## 📄 License
-
-This project is released under the MIT License.
