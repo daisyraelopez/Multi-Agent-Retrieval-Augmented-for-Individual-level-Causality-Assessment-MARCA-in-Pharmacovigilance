@@ -21,7 +21,7 @@ MARCA was implemented using the **CrewAI orchestration framework (v0.126.0)**, i
 | **Agent 1 — Scientific Evidence Retrieval** | Queries PubMed (NCBI Entrez API) for mechanism-of-action and supporting/refuting clinical evidence | Feeds Agent 4 | Gemini 2.5 Pro |
 | **Agent 2 — Drug Label Assessment** | Classifies AE listedness against FDA drug labels | Q1 | DeepSeek-V3.2 |
 | **Agent 3 — Objective Evidence Assessment** | Classifies reported terms as objective sign vs. subjective symptom | Q10 | DeepSeek-V3.2 |
-| **Agent 4 — Clinical Causality Assessment** | Produces rationale and plausibility rating from full structured case context + literature summary | Q2–Q10 | Gemini 2.5 Pro |
+| **Agent 4 — Clinical Causality Assessment** | Produces rationale and plausibility rating from full structured case context + literature summary | Q2–Q9 | Gemini 2.5 Pro |
 
 A continuously updated **Knowledge Base (KB)** of expert-assessed drug–event combinations (DECs) supports **selective RAG restricted to Naranjo Questions 2, 5, and 10** — the items identified in prior work as the most reasoning-intensive. RAG is triggered only when a non-retrieval answer disagrees with the expert assessment for that question, so retrieval is applied where it adds value rather than universally.
 
