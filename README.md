@@ -104,6 +104,7 @@ Integrating a multi-agent architecture with selective RAG improved automated cau
 
 If you use this repository or its materials in academic work, please cite:
 
+### BibTeX
 ```bibtex
 @article{Lopez2026MARCA,
   title   = {Multi-Agent Retrieval-Augmented for Individual-level Causality Assessment (MARCA) in Pharmacovigilance},
