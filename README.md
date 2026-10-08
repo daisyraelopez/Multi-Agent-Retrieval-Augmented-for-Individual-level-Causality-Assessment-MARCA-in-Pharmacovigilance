@@ -98,10 +98,9 @@ Integrating a multi-agent architecture with selective RAG improved automated cau
 ## 👤 Author
 
 **Daisy Rae Lopez** (Master's Student, Dept. of Drug Design and Pharmacology (ILF), University of Copenhagen, Copenhagen, Denmark)
-
+**Angela Boccia** (PhD Student, Department of Medical and Surgical Sciences (DIMEC), University of Bologna, Bologna, Italy)
 **Maurizio Sessa** (Advisor and Coordinator, Dept. of Drug Design and Pharmacology (ILF), University of Copenhagen, Copenhagen, Denmark)
 
-**Angela Boccia** (PhD Student, Department of Medical and Surgical Sciences (DIMEC), University of Bologna, Bologna, Italy)
 
 ## 📚 Citation
 
@@ -111,7 +110,7 @@ If you use this repository or its materials in academic work, please cite:
 ```bibtex
 @article{Lopez2026MARCA,
   title   = {Multi-Agent Retrieval-Augmented for Individual-level Causality Assessment (MARCA) in Pharmacovigilance},
-  author  = {Lopez, Daisy Rae; Sessa, Maurizio; Boccia, Angela},
+  author  = {Lopez, Daisy Rae; Boccia, Angela; Sessa, Maurizio},
   year    = {2026},
   journal = {Manuscript under review}
 }
