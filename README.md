@@ -83,9 +83,6 @@ Integrating a multi-agent architecture with selective RAG improved automated cau
 │
 ├── output/
 │   ├── results/                 # Question-level and classification-level agreement tables
-│   ├── figures/                  # Confusion matrices, RAG vs. non-RAG comparisons
-│   └── logs/                      # Raw agent outputs and rationales
-│
 ├── README.md
 ```
 
