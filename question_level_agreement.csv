@@ -1,0 +1,11 @@
+Question,Description,n,Agreement (%),Cohen's k,Mean MARCA,Mean Human
+Q1,Previous conclusive reports,1562,89.3,0.787,0.53,0.47
+Q2,Temporal association,1562,96.8,0.491,0.09,0.04
+Q3,Improvement following drug discontinuation,1562,100.0,1.0,0.01,0.01
+Q4,Reappearance following re-challenge,1562,100.0,,0.0,0.0
+Q5,Alternative cause excluded,1562,85.4,0.269,-0.85,-0.5
+Q6,Reaction following placebo administration,1562,100.0,,0.0,0.0
+Q7,Toxic drug level detected,1562,100.0,,0.0,0.0
+Q8,Dose-response relationship,1562,100.0,,0.0,0.0
+Q9,Similar reaction to previous exposure,1562,100.0,,0.0,0.0
+Q10,Objective evidence confirmation,1562,96.8,0.922,0.7,0.72

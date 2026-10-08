@@ -1,0 +1,49 @@
+Case ID: 229933175
+ Case Version: 5
+ FDA Code: F
+ Event Date: 20230314
+ Manufacture Date: 20250214
+ Initial FDA Date: 20230927
+ FDA Date: 20250219
+ Report Code: PER
+ Authorization Number: NA
+ Manufacturer Number: CO-TAKEDA-2023TUS029088
+ Manufacturer Sender: TAKEDA
+ Literature Reference: NA
+ Age: 7
+ Age Code: YR
+ Age Group: NA
+ Sex: F
+ E Sub: Y
+ Weight: 20
+ Weight Code: KG
+ Report Date: 20250219
+ To Manufacturer: NA
+ Occupation Code: NA
+ Reporter Country: CO
+ Occurrence Country: CO
+ Adverse Reaction(s): Fall; Nasal injury ; Upper limb fracture ; Nasal inflammation ; Gastroenteritis ; Incorrect dose administered ; Ovarian cyst ; Rhinalgia ; Epistaxis ; Product use issue
+ Case ID Number: 22993317
+ Drug Sequence: 1 ; 1
+ Role Code: PS ; PS
+ Drug Name: ICATIBANT ; ICATIBANT
+ Product AI: ICATIBANT ; ICATIBANT
+ Val VBM: 1 ; 1
+ Route: Subcutaneous use ; Subcutaneous use
+ Dose VBM: 1 dosage form ; UNK
+ Cumulative Dose (Char): NA ; NA
+ Cumulative Dose (Unit): NA ; NA
+ Dechal: NA ; NA
+ Rechal: U ; U
+ Lot Number: NA ; NA
+ Expiration Date: NA ; NA
+ NDA Number: 22150 ; 22150
+ Dose Amount: NA ; NA
+ Dose Unit: NA ; NA
+ Dose Form: Solution for injection ; Solution for injection
+ Dose Frequency: NA ; NA
+ Indication for Use: Hereditary angioedema ; Hereditary angioedema
+ Therapy Start Date: NA ; NA
+ Therapy End Date: NA ; NA
+ Duration: NA ; NA
+ Duration Code: NA ; NA

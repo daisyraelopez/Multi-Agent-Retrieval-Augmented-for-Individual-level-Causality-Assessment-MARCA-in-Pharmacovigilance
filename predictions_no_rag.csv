@@ -1,0 +1,61 @@
+dec_id,case_id,drug,ae,Q2,Q5,Q10
+266,153433253,DIAZEPAM,Intentional product use issue,0,-1,0
+285,153433253,REGLAN,Intentional product use issue,0,-1,0
+740,180595396,XELJANZ,Visual impairment,0,-1,0
+774,194885198,AVASTIN,General physical health deterioration,0,-1,0
+798,199363053,SPINRAZA,General physical health deterioration,0,-1,0
+908,204860093,CLONAZEPAM,Condition aggravated,0,-1,0
+845,206654533,POMALYST,Visual impairment,0,-1,0
+871,208600024,TEDUGLUTIDE,Product use issue,0,-1,0
+1211,211625704,JAKAFI,Off label use,0,-1,0
+948,214198192,DUPIXENT,Visual impairment,0,-1,0
+1223,214662624,ENHERTU,Drug ineffective,0,-1,0
+1009,217413962,PROPECIA,Drug withdrawal syndrome,0,-1,0
+1011,217413962,PROPECIA,General physical health deterioration,0,-1,0
+1069,220578453,METOPIRONE,Condition aggravated,0,-1,0
+1072,220728806,PHESGO,Off label use,0,-1,0
+1119,223339302,OPDUALAG,Off label use,0,-1,0
+1129,223615844,VEDOLIZUMAB,Drug ineffective,0,-1,0
+1127,223656912,VEDOLIZUMAB,Disability,0,-1,0
+1158,225958262,TIKOSYN,Visual impairment,0,-1,0
+1175,226140432,FINASTERIDE,Product use issue,0,-1,0
+1176,226171673,FINASTERIDE,Product use issue,0,-1,0
+1247,226551694,SIPONIMOD,Visual impairment,0,-1,0
+1301,229933175,ICATIBANT,Product use issue,0,-1,0
+1372,231638587,GENOTROPIN,Intentional device misuse,0,-1,0
+1388,231876503,MAYZENT,General physical health deterioration,0,-1,0
+1459,232944706,XELJANZ XR,Visual impairment,0,-1,0
+28,1528861314,BELIMUMAB,Cough,0,-1,0
+38,1528861314,CHLOROQUINE,Drug ineffective,0,-1,0
+45,1528861314,CHLOROQUINE,Cough,0,-1,0
+62,1528861314,HYDROXYCHLOROQUINE SULFATE,Cough,0,-1,0
+333,1533150218,DICLOFENAC SODIUM,Balance disorder,0,-1,0
+352,1533150218,DICLOFENAC SODIUM,Visual impairment,0,-1,0
+386,1533150218,FLOMAX,Balance disorder,0,-1,0
+405,1533150218,FLOMAX,Visual impairment,0,-1,0
+428,1533150218,FLOMAX,Incoherent,0,-1,0
+439,1533150218,PONATINIB,Balance disorder,0,-1,0
+458,1533150218,PONATINIB,Visual impairment,0,-1,0
+481,1533150218,PONATINIB,Incoherent,0,-1,0
+492,1533150218,AMITRIPTYLINE HYDROCHLORIDE,Balance disorder,0,-1,0
+511,1533150218,AMITRIPTYLINE HYDROCHLORIDE,Visual impairment,0,-1,0
+534,1533150218,AMITRIPTYLINE HYDROCHLORIDE,Incoherent,0,-1,0
+545,1533150218,SUMATRIPTAN SUCCINATE,Balance disorder,0,-1,0
+564,1533150218,SUMATRIPTAN SUCCINATE,Visual impairment,0,-1,0
+587,1533150218,SUMATRIPTAN SUCCINATE,Incoherent,0,-1,0
+598,1533150218,XDEMVY,Balance disorder,0,-1,0
+617,1533150218,XDEMVY,Visual impairment,0,-1,0
+651,1533150218,ACYCLOVIR,Balance disorder,0,-1,0
+670,1533150218,ACYCLOVIR,Visual impairment,0,-1,0
+822,2055480826,PREMARIN,Withdrawal syndrome,0,-1,0
+156,1533424812,LOSARTAN,Bipolar disorder,-1,-1,0
+317,152884343,PREDNISONE,Steroid diabetes,0,0,1
+318,152884343,PREDNISONE,Cellulitis,0,0,1
+1172,226140432,FINASTERIDE,Product use in unapproved indication,0,-1,1
+1178,226171673,FINASTERIDE,Product use in unapproved indication,0,-1,1
+1185,227305563,PHEXXI,Expired product administered,0,-1,1
+1259,229170495,FILSPARI,Inappropriate schedule of product administration,0,-1,1
+1260,229170495,FILSPARI,Product prescribing error,0,-1,1
+1265,229465142,KESIMPTA,Maternal exposure during pregnancy,0,-1,1
+32,1528861314,CHLOROQUINE,Inappropriate schedule of product administration,0,-1,1
+33,1528861314,CHLOROQUINE,Product prescribing issue,0,-1,1

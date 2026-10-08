@@ -1,0 +1,5 @@
+Level,Description,n,Agreement (%),Cohen's k,Mean MARCA,Mean Human,Expert-assigned (n),Correctly classified (n),Most common misclassification
+Final,Overall Naranjo causality classification,1562.0,83.5,0.306,-0.05,0.27,,,
+Doubtful,,,96.9,,,,1273.0,1234.0,Possible (n = 36)
+Possible,,,23.3,,,,283.0,66.0,Doubtful (n = 203)
+Probable,,,66.7,,,,6.0,4.0,Possible (n = 2)
