@@ -81,8 +81,7 @@ Integrating a multi-agent architecture with selective RAG improved automated cau
 │   ├── drug_class_resolution/  # OpenFDA / RxNorm / LLM-based drug-class lookup
 │   └── evaluation/              # Agreement statistics (% agreement, Cohen's κ), plots
 │
-├── output/
-│   ├── results/                 # Question-level and classification-level agreement tables
+├── output/                 # Question-level and classification-level agreement tables
 ├── README.md
 ```
 
