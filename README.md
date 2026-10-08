@@ -109,7 +109,7 @@ If you use this repository or its materials in academic work, please cite:
 ```bibtex
 @article{Lopez2026MARCA,
   title   = {Multi-Agent Retrieval-Augmented for Individual-level Causality Assessment (MARCA) in Pharmacovigilance},
-  author  = {Lopez, Daisy Rae and Sessa, Maurizio},
+  author  = {Lopez, Daisy Rae; Sessa, Maurizio; Boccia, Angela},
   year    = {2026},
   journal = {Manuscript under review}
 }
