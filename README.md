@@ -1,4 +1,4 @@
-# 🤖 MARCA for Individual-level Causality Assessment in Pharmacovigilance
+# 🤖 Multi-Agent Retrieval-Augmented Causality Assessment (MARCA) for Individual-level Causality Assessment in Pharmacovigilance
 
 ## 📌 Background
 
