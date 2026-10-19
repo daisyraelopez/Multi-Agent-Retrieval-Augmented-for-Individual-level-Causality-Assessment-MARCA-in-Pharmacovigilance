@@ -1,0 +1,7 @@
+# Versions tested for the offline, frozen-score evaluation (NOT original training/inference versions)
+numpy==2.3.5
+pandas==2.2.3
+scikit-learn==1.8.0
+matplotlib==3.10.8
+rich==15.0.0
+requests==2.32.5

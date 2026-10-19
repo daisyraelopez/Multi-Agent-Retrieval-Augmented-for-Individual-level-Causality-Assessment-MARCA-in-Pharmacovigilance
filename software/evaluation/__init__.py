@@ -20,12 +20,17 @@ from .summary import print_rag_summary
 RAG_QUESTIONS = ["Q2", "Q5", "Q10"]
 
 
-def parse_score(text):
-    """Extract the numeric score from an answer such as 'Score: -1 ...'."""
+def parse_score(text, question=None):
+    """Extract a validated Naranjo score from an answer such as 'Score: -1 ...'."""
     if not text:
         return None
     m = re.search(r"Score\s*[:\-]\s*([+-]?\d+(?:\.\d+)?)", str(text), re.IGNORECASE)
-    return float(m.group(1)) if m else None
+    if not m:
+        return None
+    value = float(m.group(1))
+    if question is not None and value not in VALID_SCORES[question]:
+        raise ValueError(f"Invalid Naranjo {question} score from model: {value}")
+    return value
 
 
 def predictions_from_case_result(rag_results: list):
@@ -36,8 +41,8 @@ def predictions_from_case_result(rag_results: list):
         nr, wr = dict(base), dict(base)
         for q in RAG_QUESTIONS:
             qd = entry.get(q, {}) or {}
-            nr[q] = parse_score(qd.get("version_no_rag"))
-            wr[q] = parse_score(qd.get("version_with_rag"))
+            nr[q] = parse_score(qd.get("version_no_rag"), question=q)
+            wr[q] = parse_score(qd.get("version_with_rag"), question=q)
         no_rag_rows.append(nr)
         rag_rows.append(wr)
     cols = ["case_id", "drug", "ae"] + RAG_QUESTIONS
@@ -94,7 +99,8 @@ def split_comparison_workbook(path=None, gold_path=None, predictions_path=None):
 
 KEYS = ["case_id", "drug", "ae"]
 ALL_QUESTIONS = [f"Q{i}" for i in range(1, 11)]
-TOTAL_QUESTIONS = [f"Q{i}" for i in range(2, 11)]      # Q1 excluded from the total score
+COMPARE_QUESTIONS = [f"Q{i}" for i in range(2, 11)]  # Primary question-level outcome
+TOTAL_QUESTIONS = ALL_QUESTIONS  # Standard Naranjo cumulative score Q1–Q10
 CATEGORIES = ["Doubtful", "Possible", "Probable", "Definite"]
 
 DESCRIPTIONS = {
@@ -111,6 +117,26 @@ DESCRIPTIONS = {
 }
 
 
+
+# Valid Naranjo question score sets; fail fast rather than report invalid outcomes.
+VALID_SCORES = {
+    "Q1": {0, 1}, "Q2": {-1, 0, 2}, "Q3": {0, 1},
+    "Q4": {-1, 0, 2}, "Q5": {-1, 0, 2}, "Q6": {-1, 0, 1},
+    "Q7": {0, 1}, "Q8": {0, 1}, "Q9": {0, 1}, "Q10": {0, 1},
+}
+
+
+def validate_naranjo_scores(df, questions=ALL_QUESTIONS, label="dataset"):
+    """Reject scores outside the exact Naranjo item-specific scoring domain."""
+    for q in questions:
+        if q not in df:
+            raise ValueError(f"Missing {q} in {label}")
+        values = pd.to_numeric(df[q], errors="coerce")
+        invalid = values.isna() | ~values.isin(VALID_SCORES[q])
+        if invalid.any():
+            rows = df.loc[invalid, ['dec_id', q]] if 'dec_id' in df else df.loc[invalid, [q]]
+            raise ValueError(f"{label}: invalid {q} values: {rows.head(10).to_dict('records')}")
+
 # ── basic measures ────────────────────────────────────────────────────────────
 def naranjo_category(total):
     if pd.isna(total):
@@ -125,13 +151,13 @@ def naranjo_category(total):
 
 
 def percent_agreement(a: pd.Series, b: pd.Series) -> float:
-    return float((a.astype(str) == b.astype(str)).mean() * 100)
+    return float((a == b).mean() * 100)
 
 
 def cohen_kappa(a: pd.Series, b: pd.Series):
     """Unweighted Cohen's kappa; None when undefined (a single value used by both raters)."""
     a, b = a.astype(str), b.astype(str)
-    if len(set(a) | set(b)) < 2:
+    if len(a) == 0 or len(set(a) | set(b)) < 2:
         return None
     return float(cohen_kappa_score(a, b))
 
@@ -162,6 +188,8 @@ def merge_with_gold(pred: pd.DataFrame, gold: pd.DataFrame) -> pd.DataFrame:
     unmatched = len(pred) - len(merged)
     if unmatched:
         print(f"⚠️  {unmatched} prediction rows had no matching gold-standard row and were skipped.")
+    if "dec_id" in merged and merged["dec_id"].duplicated().any():
+        raise ValueError("Duplicate dec_id after prediction/gold merge")
     return merged
 
 
@@ -171,8 +199,8 @@ def _questions_present(merged, questions):
 
 def total_scores(merged, questions=TOTAL_QUESTIONS):
     qs = _questions_present(merged, questions)
-    marca = merged[[f"{q}_marca" for q in qs]].apply(_to_number).sum(axis=1, min_count=1)
-    expert = merged[[f"{q}_expert" for q in qs]].apply(_to_number).sum(axis=1, min_count=1)
+    marca = merged[[f"{q}_marca" for q in qs]].apply(_to_number).sum(axis=1, min_count=len(qs))
+    expert = merged[[f"{q}_expert" for q in qs]].apply(_to_number).sum(axis=1, min_count=len(qs))
     return marca, expert
 
 
@@ -203,7 +231,7 @@ def question_level_table(merged, questions=ALL_QUESTIONS, total_questions=TOTAL_
     return pd.DataFrame(rows)
 
 
-def directional_table(merged, questions=TOTAL_QUESTIONS):
+def directional_table(merged, questions=COMPARE_QUESTIONS):
     rows = []
     for q in _questions_present(merged, questions):
         m, e = _to_number(merged[f"{q}_marca"]), _to_number(merged[f"{q}_expert"])
@@ -258,12 +286,14 @@ def evaluate(predictions_path=None, gold_path=None, out_dir=None,
     """
     pred = pd.read_csv(predictions_path or config.RESULTS_DIR / "predictions_rag.csv", dtype={"case_id": str})
     gold = pd.read_csv(gold_path or config.GOLD_STANDARD_PATH, dtype={"case_id": str})
+    validate_naranjo_scores(pred, ALL_QUESTIONS, "MARCA predictions")
+    validate_naranjo_scores(gold, ALL_QUESTIONS, "Expert reference")
     merged = merge_with_gold(pred, gold)
 
     conf = confusion_matrix(merged, total_questions)
     tables = {
         "Table6_question_level": question_level_table(merged, questions, total_questions),
-        "Table7_directional": directional_table(merged, total_questions),
+        "Table7_directional": directional_table(merged, COMPARE_QUESTIONS),
         "Table8_per_category": per_category_table(conf),
         "Confusion_matrix": conf,
     }
@@ -277,9 +307,10 @@ def evaluate(predictions_path=None, gold_path=None, out_dir=None,
               ignore_index=True).to_csv(out_dir / "classification_level_agreement.csv", index=False)
     tables["Table7_directional"].to_csv(out_dir / "directional_disagreement.csv", index=False)
     conf.to_csv(out_dir / "confusion_matrix.csv")
-    with pd.ExcelWriter(out_dir / excel_name, engine="openpyxl") as writer:
-        for name, df in tables.items():
-            df.to_excel(writer, sheet_name=name, index=(name == "Confusion_matrix"))
+    if excel_name:
+        with pd.ExcelWriter(out_dir / excel_name, engine="openpyxl") as writer:
+            for name, df in tables.items():
+                df.to_excel(writer, sheet_name=name, index=(name == "Confusion_matrix"))
     print(f"✅ Results saved to {out_dir}")
     return tables
 
@@ -295,6 +326,10 @@ def rag_ablation(no_rag_path=None, rag_path=None, gold_path=None, out_dir=None,
     no_rag = pd.read_csv(no_rag_path or config.RESULTS_DIR / "predictions_no_rag.csv", dtype={"case_id": str})
     rag = pd.read_csv(rag_path or config.RESULTS_DIR / "predictions_rag.csv", dtype={"case_id": str})
     gold = pd.read_csv(gold_path or config.GOLD_STANDARD_PATH, dtype={"case_id": str})
+    for label, frame, qs in (("Non-RAG", no_rag, list(questions)),
+                             ("RAG", rag, list(questions)),
+                             ("Expert", gold, list(questions))):
+        validate_naranjo_scores(frame, qs, label)
     rag = rag[rag["dec_id"].isin(no_rag["dec_id"])]
     rows = []
     for cond, pred in (("Non-RAG", no_rag), ("RAG", rag)):

@@ -1,0 +1,32 @@
+{
+  "source": "frozen workbook-exported question-level scores; no LLM inference rerun",
+  "n_decs": 1562,
+  "n_icsrs": 215,
+  "q1_included_in_total": true,
+  "final_agreement_pct": 79.4494,
+  "final_unweighted_kappa": 0.587002,
+  "exact_total_score_agreement_pct": 71.5749,
+  "mean_total_marca": 0.482074,
+  "mean_total_human": 0.744558,
+  "mean_signed_difference": -0.262484,
+  "final_confusion": {
+    "Doubtful": {
+      "Doubtful": 765,
+      "Possible": 195,
+      "Probable": 0
+    },
+    "Possible": {
+      "Doubtful": 100,
+      "Possible": 470,
+      "Probable": 4
+    },
+    "Probable": {
+      "Doubtful": 2,
+      "Possible": 20,
+      "Probable": 6
+    }
+  },
+  "rag_cohort_size": 60,
+  "rag_provenance_verified": false,
+  "warning": "dec_id=310 Q2 revised to +2 on user instruction; original clinical rationale retained for adjudication"
+}

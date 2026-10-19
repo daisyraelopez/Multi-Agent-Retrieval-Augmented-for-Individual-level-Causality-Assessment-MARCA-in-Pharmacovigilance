@@ -1,0 +1,7 @@
+Question,Condition,n,Agreement (%),Cohen's k,Mean difference,Overestimation (n),Agreement (n),Underestimation (n)
+Q2,Non-RAG,60,98.33,0.0,-0.017,0,59,1
+Q2,RAG,60,100.0,,0.0,0,60,0
+Q5,Non-RAG,60,65.0,0.016,-0.967,1,39,20
+Q5,RAG,60,83.33,0.571,-0.5,0,50,10
+Q10,Non-RAG,60,18.33,0.007,-0.817,0,11,49
+Q10,RAG,60,100.0,1.0,0.0,0,60,0

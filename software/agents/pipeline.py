@@ -23,9 +23,9 @@ import pandas as pd
 import requests
 from rich.console import Console
 
-from . import config
-from .config import call_deepseek, call_deepseek_json
-from .case_parsing import deduplicate_drugs, process_case
+from .. import config
+from ..config import call_deepseek, call_deepseek_json
+from ..case_parsing import deduplicate_drugs, process_case
 
 console = Console()
 

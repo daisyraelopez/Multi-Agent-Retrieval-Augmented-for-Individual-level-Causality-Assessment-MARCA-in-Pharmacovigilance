@@ -449,23 +449,23 @@ _EXPERT_Q5_NO_INFO = (
 
 Q_DEF = {
     "Q2": (
-        "Q2 – Temporal Plausibility\n"
-        "Score: 2=clear temporal relationship (drug before AE, plausible latency); "
-        "1=unclear or partial; 0=no data (dates missing/not assessable); "
-        "-1=implausible (AE before drug).\n"
-        "If therapy start date AND event date are both missing/NA, "
-        "score MUST be 0 and state temporal plausibility cannot be established."
+        "Naranjo Q2 – Did the adverse event appear after the suspected drug was administered?\n"
+        "Allowed scores: +2=Yes (documented event after exposure); "
+        "-1=No (event clearly preceded exposure); 0=Do not know (timing indeterminate).\n"
+        "If timing cannot be established from case data, use 0; do not infer dates."
     ),
     "Q5": (
-        "Q5 – Confounding Factors\n"
-        "Score: 2=no confounders; 1=minor; 0=no confounder info; "
-        "-1=significant confounders; -2=alternative cause clearly more likely.\n"
-        "If no concurrent medications and no comorbidities info, score MUST be 0."
+        "Naranjo Q5 – Are there alternative causes that could independently explain the reaction?\n"
+        "Allowed scores: -1=Yes (credible alternative cause); "
+        "+2=No (credible alternative causes excluded using case-specific evidence); "
+        "0=Do not know (insufficient clinical information).\n"
+        "Absence of documented confounders is not proof that alternatives were excluded."
     ),
     "Q10": (
-        "Q10 – Sign vs Symptom\n"
-        "Score: 1=clinical sign (objectively measurable); "
-        "0=symptom (subjective/patient-reported); -1=not confirmed."
+        "Naranjo Q10 – Was the adverse event confirmed by objective evidence?\n"
+        "Allowed scores: +1=Yes (documented patient-specific objective confirmation); "
+        "0=No or Do not know (not confirmed or unavailable).\n"
+        "A MedDRA term that denotes a measurable sign, by itself, is not patient-specific confirmation."
     ),
 }
 

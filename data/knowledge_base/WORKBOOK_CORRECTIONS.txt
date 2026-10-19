@@ -1,0 +1,5 @@
+Correction 2026-10-19: MARCA AI Q2 for dec_id=310 changed +1 to +2 by user instruction.
+The original Excel formulas were retained; cached totals and agreement cells were recalculated from the ten underlying question scores.
+The other question scores and all clinical evidence/rationales are unchanged.
+Cached cells repaired: {'Q2 corrected': 1, 'BC total cache repaired': 28, 'Question-level agreement cache repaired': 1, 'BD total cache repaired': 22, 'Total agreement cache repaired': 14}
+The Q2 clinical rationale in dec_id=310 appears to express uncertainty and requires human validation of its compatibility with +2.
