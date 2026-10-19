@@ -36,31 +36,31 @@ MARCA achieved an overall Naranjo classification agreement of **82.9% (Cohen's �
 | Question | Agreement | Cohen's κ |
 |---|---|---|
 | Q2 — Temporal association | 96.8% | 0.491 |
-| Q5 — Alternative causes | 84.9% | 0.238 |
+| Q5 — Alternative causes | 85.4% | 0.269 |
 | Q10 — Objective evidence | 96.8% | 0.922 |
 | Q3, Q4, Q6–Q9 | 100% | — (near-universal default scoring due to sparse FAERS documentation) |
 
-### 🔹 Effect of Selective RAG (60-DEC ablation cohort)
+### 🔹 Selective RAG: retrospective 60-DEC ablation (descriptive only)
 
-| Question | Non-RAG agreement | With RAG | Δ | κ (non-RAG → RAG) |
+| Question | Non-RAG agreement | RAG-labelled agreement | Δ | κ (non-RAG → RAG-labelled) |
 |---|---|---|---|---|
-| **Q2** — Temporal association | 98.33% | 96.67% | −1.66 pp | 0.433 → 0.491 |
-| **Q5** — Alternative causes | 68.33% | 83.33% | **+16.67 pp** | 0.151 → 0.177 |
-| **Q10** — Objective evidence | 15.00% | 98.33% | **+83.33 pp** | 0.006 → 0.922 |
+| **Q2** — Temporal association | 98.33% | 100.00% | +1.67 pp | 0.000 → not estimable |
+| **Q5** — Alternative causes | 65.00% | 83.33% | **+18.33 pp** | 0.016 → 0.571 |
+| **Q10** — Objective evidence | 18.33% | 100.00% | **+81.67 pp** | 0.007 → 1.000 |
 
-Retrieval produced its largest effect on **Question 10**, resolving a systematic inability to distinguish objective clinical signs from subjective symptoms without external reference — an information gap rather than a reasoning failure. A meaningful gain was also seen on **Question 5**, while **Question 2** was largely capped by missing therapy-date documentation in FAERS narratives rather than by reasoning ability.
+The 60 DECs were selected because at least one non-RAG score for Q2, Q5 or Q10 disagreed with the expert reference, so this is a disagreement-enriched retrospective comparison, not a prospective test of RAG triggering. In addition, the RAG-labelled scores were exported from the comparison workbook and their original inference logs were not available (see `output/results/PREDICTION_PROVENANCE.md`). The differences above are therefore descriptive and should not be read as a validated effect of retrieval. The largest difference was on **Question 10** (non-RAG scores were lower than the expert's in 49 of 60 DECs; none in the RAG-labelled file), followed by **Question 5**; **Question 2** changed in a single DEC.
 
 ### 🔹 Remaining Disagreement
 
-The largest remaining source of disagreement was **Question 5 (alternative causes)**, where MARCA identified a plausible alternative cause more often than expert assessors (mean score −0.86 vs. −0.50) — a **directionally conservative, safer failure mode** than the overestimation of causality reported in prior single-agent studies.
+In the full sample (1,562 DECs), the largest remaining disagreement was on **Question 5 (alternative causes)**: agreement 85.4%, κ = 0.269, with MARCA assigning lower scores than the experts in 205 DECs and higher in 23 (mean scores −0.85 vs. −0.50; mean signed difference −0.35). MARCA therefore tended to credit alternative causes more often than experts, i.e. to assign lower causality. Whether this is "safer" than the behaviour of earlier single-agent approaches has not been tested here; cross-study comparisons are descriptive only.
 
 ## 🧪 Conclusions
 
-Integrating a multi-agent architecture with selective RAG improved automated causality assessment agreement while providing a transparent, modular, and auditable framework for individual-level PV — each agent's contribution and each retrieved precedent case can be inspected individually, unlike an opaque single-model inference. MARCA's question-level agreement met or exceeded every threshold established in consultation with industry collaborators, positioning it as a **decision-support / triage layer** — automating routine, well-documented assessments (Q3, Q4, Q6–Q9, and increasingly Q2/Q10) while escalating genuinely ambiguous cases such as Q5 for mandatory human review — rather than a replacement for expert adjudication.
+On the frozen data, MARCA's final four-category Naranjo classification (Q1–Q10) agreed with the expert reference in 79.4% of DECs (κ = 0.587), and exact numerical-score agreement was 71.6%. Question-level agreement was high for Q2, Q3, Q4, Q6–Q10 (≥96.8% raw agreement; κ non-estimable where scores did not vary) and lowest for Q5. The pre-specified percentage-agreement benchmark for Q1 (>95%) was **not** met (89.3%). The architecture is modular and each agent's output and retrieved precedent can be inspected, which supports its use as a **decision-support / triage layer** with human review of ambiguous items such as Q5, rather than as a replacement for expert adjudication.
 
-**Limitations:** sparse FAERS documentation constrains variation on several Naranjo items; the evaluation used a single model pairing (Gemini 2.5 Pro + DeepSeek-V3.2) and a relatively limited, single-database (FAERS) sample; the RAG ablation was evaluated on a 60-DEC cohort against a KB that was still being progressively populated during the study, so reported RAG gains are likely a conservative estimate.
+**Limitations:** sparse FAERS documentation limits score variation on several Naranjo items (no variation for Q4, Q6–Q9); a single model pairing (Gemini 2.5 Pro + DeepSeek-V3.2) and a single database (FAERS) were used; the knowledge base and evaluation set overlap (same-ICSR examples excluded at retrieval, which is not independent validation); no LLM calls were rerun in this release and the provenance of the RAG-labelled scores is unverified; the 60-DEC ablation is retrospective and selected on known disagreements, so its direction and size cannot be generalised; the Q2 rationale for DEC 310 still needs clinical reconciliation with its corrected score (+2).
 
-**Future directions:** a continuously evolving, human-in-the-loop KB; benchmarking against a larger panel of independent expert assessors; evaluation across additional international spontaneous reporting systems (EudraVigilance, Yellow Card Scheme, JADER); and testing alternative base LLMs to isolate the architecture's contribution from model choice.
+**Future directions:** a continuously evolving, human-in-the-loop KB with archived inference logs; prospective, independently held-out evaluation of selective RAG; benchmarking against a larger panel of independent expert assessors; evaluation across additional spontaneous reporting systems (EudraVigilance, Yellow Card Scheme, JADER); and testing alternative base LLMs to separate the architecture's contribution from model choice.
 
 ## 🗂 Repository Structure
 
