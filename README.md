@@ -31,14 +31,18 @@ A continuously updated **Knowledge Base (KB)** of expert-assessed drug–event c
 
 ### 🔹 Overall Performance
 
-MARCA achieved an overall Naranjo classification agreement of **82.9% (Cohen's κ = 0.277)** against the human expert gold standard — the highest overall classification agreement of any comparator configuration in the cross-study comparison, and higher agreement than prior single-agent LLM approaches on all three reasoning-intensive questions:
+On the frozen data (1,562 DECs from 215 ICSRs), MARCA's final four-category Naranjo classification (Q1–Q10) agreed with the human expert reference in **79.4% of DECs (Cohen's κ = 0.587)**; exact agreement on the cumulative numerical score was 71.6%. These values are numerically higher than those reported for the comparator configurations of Heckmann et al. (2026a, 2026b), but the comparison is descriptive only: case populations, algorithms, assessment protocols and agreement statistics (κ vs. Gwet's AC1) differ between studies.
 
 | Question | Agreement | Cohen's κ |
 |---|---|---|
+| Q1 — Previous conclusive reports (descriptive) | 89.3% | 0.787 |
 | Q2 — Temporal association | 96.8% | 0.491 |
+| Q3 — Improvement after discontinuation | 100% | 1.000 |
+| Q4, Q6–Q9 | 100% | not estimable (all scores zero in both MARCA and expert data) |
 | Q5 — Alternative causes | 85.4% | 0.269 |
 | Q10 — Objective evidence | 96.8% | 0.922 |
-| Q3, Q4, Q6–Q9 | 100% | — (near-universal default scoring due to sparse FAERS documentation) |
+
+Q1 was not part of the primary question-level comparison, and its >95% agreement benchmark was not met. Q4 and Q6–Q9 show no score variation, so their 100% agreement is uninformative about discriminative performance.
 
 ### 🔹 Selective RAG: retrospective 60-DEC ablation (descriptive only)
 
