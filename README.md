@@ -89,6 +89,10 @@ On the frozen data, MARCA's final four-category Naranjo classification (Q1–Q10
 │   ├── archive_original/                 
 │   ├── figures/
 │   ├── results/               # Question-level and classification-level agreement tables
+├── notebooks/
+│   └── MARCA_one_case.ipynb   # Run MARCA on one FAERS case in Google Colab
+├── tests/
+│   └── test_evaluation.py     # Checks the frozen scores against the reported results
 ├── README.md
 ```
 
@@ -97,6 +101,24 @@ On the frozen data, MARCA's final four-category Naranjo classification (Q1–Q10
 - Python 3.11
 - [CrewAI](https://github.com/crewAIInc/crewAI) v0.126.0
 - API access: Google Gemini 2.5 Pro, DeepSeek-V3.2, NCBI Entrez (PubMed), OpenFDA, RxNorm
+
+## ▶️ Run MARCA on one case (Google Colab)
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/daisyraelopez/Multi-Agent-Retrieval-Augmented-for-Individual-level-Causality-Assessment-MARCA-in-Pharmacovigilance/blob/main/notebooks/MARCA_one_case.ipynb)
+
+`notebooks/MARCA_one_case.ipynb` runs one FAERS case through Agents 1–4 and the selective RAG step. It contains the code of `software/config.py`, `software/case_parsing/`, `software/agents/pipeline.py`, `software/rag/__init__.py` and the score functions of `software/evaluation/`, copied from commit `4732dfbe`. Each cell names its source file and line numbers; 6 of the 1,793 copied lines are adapted for the notebook and marked `# [notebook]`.
+
+1. Paste your DeepSeek and Gemini API keys in cell 3.
+2. Edit the case in cell 16 (`CASE_TEXT`); it contains `data/raw/example_case.txt` by default.
+3. Run all. The last cell downloads the source files from GitHub and checks, line by line, that the code that ran matches the repository.
+
+## ✅ Tests
+
+```bash
+python -m unittest -v tests.test_evaluation
+```
+
+The tests recompute the agreement statistics from the frozen scores (`output/results/predictions_rag.csv`, `data/gold_standard/gold_standard.csv`) and compare them with every number reported in the manuscript: question-level agreement including Q1, directional disagreement, classification agreement, exact total-score agreement, the confusion matrix and the 60-DEC ablation. They also check that the CSV files match `data/knowledge_base/expert_kb.xlsx` and that the manual correction of DEC 310 is logged. One test is marked as an expected failure until the definition of the 60-DEC ablation cohort is reconciled with the main-analysis scores (see its docstring).
 
 ## 👤 Author
 
