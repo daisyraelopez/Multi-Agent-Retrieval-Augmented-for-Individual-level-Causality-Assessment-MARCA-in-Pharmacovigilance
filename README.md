@@ -124,6 +124,16 @@ python -m unittest -v tests.test_evaluation
 
 The tests recompute the agreement statistics from the frozen scores (`output/results/predictions_rag.csv`, `data/gold_standard/gold_standard.csv`) and compare them with every number reported in the manuscript: question-level agreement including Q1, directional disagreement, classification agreement, exact total-score agreement, the confusion matrix and the 60-DEC ablation. They also check that the CSV files match `data/knowledge_base/expert_kb.xlsx` and that the manual correction of DEC 310 is logged. One test is marked as an expected failure until the definition of the 60-DEC ablation cohort is reconciled with the main-analysis scores (see its docstring).
 
+## Important note
+
+The original implementation described in the manuscript relied on a custom LLM integration module that is not distributed as part of this repository.
+
+To ensure reproducibility while respecting software distribution constraints, users are expected to implement their own LLM interface or adapt the code to a provider supported by CrewAI/LiteLLM.
+
+An example notebook illustrating the required modifications and execution workflow is available at:
+
+notebooks/examples/MARCA_one_case_example_run_coumadin.ipynb
+
 ## 👤 Author
 
 **Daisy Rae Lopez** (Master's Student, Dept. of Drug Design and Pharmacology (ILF), University of Copenhagen, Copenhagen, Denmark)
