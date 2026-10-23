@@ -90,7 +90,9 @@ On the frozen data, MARCA's final four-category Naranjo classification (Q1–Q10
 │   ├── figures/
 │   ├── results/               # Question-level and classification-level agreement tables
 ├── notebooks/
-│   └── MARCA_one_case.ipynb   # Run MARCA on one FAERS case in Google Colab
+│   ├── MARCA_one_case.ipynb   # Run MARCA on one FAERS case in Google Colab
+│   ├── README.md              # How to use the notebook
+│   └── examples/              # Example run with outputs (constructed test case)
 ├── tests/
 │   └── test_evaluation.py     # Checks the frozen scores against the reported results
 ├── README.md
@@ -111,6 +113,8 @@ On the frozen data, MARCA's final four-category Naranjo classification (Q1–Q10
 1. Paste your DeepSeek and Gemini API keys in cell 3.
 2. Edit the case in cell 16 (`CASE_TEXT`); it contains `data/raw/example_case.txt` by default.
 3. Run all. The last cell downloads the source files from GitHub and checks, line by line, that the code that ran matches the repository.
+
+The full guide is in [`notebooks/README.md`](notebooks/README.md). It covers the settings, the case format, a new drug's label file, how to read the results and troubleshooting. [`notebooks/examples/`](notebooks/examples/) contains a run with its outputs, made with an earlier version of the notebook on a constructed test case.
 
 ## ✅ Tests
 
